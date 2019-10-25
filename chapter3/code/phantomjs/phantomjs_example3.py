@@ -3,15 +3,16 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-browser = webdriver.PhantomJS("phantomjs.exe")
+driver = webdriver.PhantomJS("phantomjs.exe")
 
-browser.get("https://resttesttest.com/")
+driver.get("https://httpbin.org/#/HTTP_Methods/post_post")
 
-browser.find_element_by_id("submitajax").click()
+driver.find_element_by_class_name("opblock-summary-description").click()
+
 try:
-	element = WebDriverWait(browser, 10).until(EC.text_to_be_present_in_element((By.ID, "statuspre"),"HTTP 200 OK"))
+	element = WebDriverWait(driver, 15).until(EC.text_to_be_present_in_element((By.CSS_SELECTOR, "btn"),"Try it out"))
 	
 finally:
-	browser.get_screenshot_as_file("image.png")
+	driver.get_screenshot_as_file("image.png")
  
-browser.close()
+driver.close()
