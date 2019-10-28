@@ -8,14 +8,14 @@ from scrapy.loader import ItemLoader
 from europython.items import EuropythonItem
 
 
-class EuropythonSpyder(CrawlSpider):
+class EuropythonSpider(CrawlSpider):
 	def __init__(self, year='', *args, **kwargs):
-		super(EuropythonSpyder, self).__init__(*args, **kwargs)
+		super(EuropythonSpider, self).__init__(*args, **kwargs)
 		self.year = year
 		self.start_urls = ['http://ep'+str(self.year)+".europython.eu/en/events/sessions"]
 		print('start url: '+str(self.start_urls[0]))
 	
-	name = "europython_spyder"
+	name = "europython_spider"
 	allowed_domains = ["ep2015.europython.eu","ep2016.europython.eu", "ep2017.europython.eu","ep2018.europython.eu","ep2019.europython.eu"]
 	
 	# Pattern for entries that match the conference/talks and /talks format
